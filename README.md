@@ -4,15 +4,15 @@ Wireless control of neopixel LEDs by building a web server with ESP8266 board.
 ## What it DO!
 In the neopixel LED wireless control project, by building a web server with ESP8266 board, we can have complete control over our neopixel ring module and the values related to the main colors, ie red, blue, green, in the scale of 0 to 255 To change, there is also a color plot on the web server that we can visually select the desired color.
 
-## Make it Portable
+### Make it Portable
 To make the LED wireless control project portable, just use the wemos board with the battery charging shield. The battery shield allows the user to portable their IoT project, so that by connecting the shield to the Wemos board and connecting the battery from the relevant connector, in addition to the portable size of the project, you can charge the battery. do. The lithium battery suitable for this shield is in the voltage range of 3.3 to 4.2.
 
-## Items needed
+### Items needed
 -Neopixel Ring
 -ESP8266
 -Wemos
 
-## Required libraries
+### Required libraries
 -Adafruit_NeoPixel
 -ESP8266WiFi
 
