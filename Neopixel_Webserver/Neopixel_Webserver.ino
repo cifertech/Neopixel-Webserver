@@ -1,27 +1,28 @@
 #include <Adafruit_NeoPixel.h>
 
-#include <ESP8266WiFi.h>
+#include "WiFi.h"
 #include <WiFiClient.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
+#include <WebServer.h>
+#include <ESPmDNS.h>
 
 // Webserver Config
-const char *ssid = "C1F3R";
-const char *password = "314159265";
-ESP8266WebServer server ( 80 );
+const char *ssid = "MyESP32AP";
+const char *password = "testpassword";
+WebServer server ( 80 );
 
 // Neopixel Config
-#define NeoPIN D4
-#define NUM_LEDS 8
+#define NeoPIN 22
+#define NUM_LEDS 50
 int brightness = 150;
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, NeoPIN, NEO_RGB + NEO_KHZ800);
 
 
-const int led = 13;
+const int led = 50;
 
 void setup ( void ) {
 
   Serial.begin ( 115200 );
+    WiFi.softAP(ssid, password);
 
   // ##############
   // NeoPixel start
@@ -37,10 +38,9 @@ void setup ( void ) {
   pinMode ( led, OUTPUT );
   digitalWrite ( led, 0 );
   
-  WiFi.begin ( ssid, password );
   Serial.println ( "" );
 
-  // Wait for connection
+  /* Wait for connection
   while ( WiFi.status() != WL_CONNECTED ) {
     delay ( 500 );
     Serial.print ( "." );
@@ -49,8 +49,9 @@ void setup ( void ) {
   Serial.println ( "" );
   Serial.print ( "Connected to " );
   Serial.println ( ssid );
+  */
   Serial.print ( "IP address: " );
-  Serial.println ( WiFi.localIP() );
+  Serial.println(WiFi.softAPIP());
 
   if ( MDNS.begin ( "esp8266" ) ) {
     Serial.println ( "MDNS responder started" );
